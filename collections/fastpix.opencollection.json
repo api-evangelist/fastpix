@@ -1,0 +1,209 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "basic": {
+        "username": "{{accessTokenId}}",
+        "password": "{{secretKey}}"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "On-Demand", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create media from a URL.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand",
+            "body": { "type": "json", "data": "{\n  \"inputs\": [ { \"type\": \"video\", \"url\": \"https://static.fastpix.io/sample.mp4\" } ],\n  \"accessPolicy\": \"public\"\n}" }
+          },
+          "docs": "Creates a new on-demand media asset by importing a video file URL."
+        },
+        {
+          "info": { "name": "List all media.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.fastpix.io/v1/on-demand" },
+          "docs": "Lists all on-demand media assets in the workspace."
+        },
+        {
+          "info": { "name": "Upload media from a device.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand/upload",
+            "body": { "type": "json", "data": "{\n  \"corsOrigin\": \"*\",\n  \"pushMediaSettings\": { \"accessPolicy\": \"public\" }\n}" }
+          },
+          "docs": "Requests a signed URL for a direct resumable device upload."
+        },
+        {
+          "info": { "name": "Get a media asset by ID.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [ { "name": "mediaId", "value": "", "type": "path" } ]
+          },
+          "docs": "Retrieves a media asset by its ID."
+        },
+        {
+          "info": { "name": "Update a media asset.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [ { "name": "mediaId", "value": "", "type": "path" } ],
+            "body": { "type": "json", "data": "{\n  \"metadata\": { \"title\": \"Updated title\" }\n}" }
+          },
+          "docs": "Updates media metadata and enrichment flags."
+        },
+        {
+          "info": { "name": "Delete a media asset.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [ { "name": "mediaId", "value": "", "type": "path" } ]
+          },
+          "docs": "Deletes a media asset."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Live Streaming", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a live stream.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/live/streams",
+            "body": { "type": "json", "data": "{\n  \"playbackSettings\": { \"accessPolicy\": \"public\" },\n  \"inputMediaSettings\": { \"maxResolution\": \"1080p\", \"reconnectWindow\": 60 }\n}" }
+          },
+          "docs": "Creates a new live stream over RTMPS/SRT."
+        },
+        {
+          "info": { "name": "List all live streams.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.fastpix.io/v1/live/streams" },
+          "docs": "Lists all live streams."
+        },
+        {
+          "info": { "name": "Get a live stream by ID.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId",
+            "params": [ { "name": "streamId", "value": "", "type": "path" } ]
+          },
+          "docs": "Retrieves a live stream by its ID."
+        },
+        {
+          "info": { "name": "Delete a live stream.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId",
+            "params": [ { "name": "streamId", "value": "", "type": "path" } ]
+          },
+          "docs": "Deletes a live stream."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Simulcast", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a simulcast target.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/simulcast",
+            "params": [ { "name": "streamId", "value": "", "type": "path" } ],
+            "body": { "type": "json", "data": "{\n  \"url\": \"rtmps://live.example.com:443/app\",\n  \"streamKey\": \"<stream-key>\"\n}" }
+          },
+          "docs": "Restreams a live stream to a third-party RTMP destination."
+        },
+        {
+          "info": { "name": "Delete a simulcast target.", "type": "http" },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/simulcast/:simulcastId",
+            "params": [ { "name": "streamId", "value": "", "type": "path" }, { "name": "simulcastId", "value": "", "type": "path" } ]
+          },
+          "docs": "Deletes a simulcast target."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Playback & Signing Keys", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a media playback ID.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/playback-ids",
+            "params": [ { "name": "streamId", "value": "", "type": "path" } ],
+            "body": { "type": "json", "data": "{\n  \"accessPolicy\": \"public\"\n}" }
+          },
+          "docs": "Creates a playback ID for a live stream."
+        },
+        {
+          "info": { "name": "Create a signing key.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.fastpix.io/v1/security/signing-keys" },
+          "docs": "Generates an RSA signing key for tokenized secure playback."
+        },
+        {
+          "info": { "name": "List signing keys.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.fastpix.io/v1/security/signing-keys" },
+          "docs": "Lists all signing keys."
+        }
+      ]
+    },
+    {
+      "info": { "name": "In-Video AI", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Enable AI enrichment on a media asset.", "type": "http" },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [ { "name": "mediaId", "value": "", "type": "path" } ],
+            "body": { "type": "json", "data": "{\n  \"summary\": true,\n  \"chapters\": true,\n  \"namedEntities\": true\n}" }
+          },
+          "docs": "Enables AI-generated summary, chapters, and named entities."
+        },
+        {
+          "info": { "name": "Generate a subtitle track.", "type": "http" },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/tracks/:trackId/generate-subtitle",
+            "params": [ { "name": "mediaId", "value": "", "type": "path" }, { "name": "trackId", "value": "", "type": "path" } ]
+          },
+          "docs": "Generates a subtitle track from an audio track."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Data & Views", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "List video views.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.fastpix.io/v1/data/views" },
+          "docs": "Lists video views with quality-of-experience metrics."
+        },
+        {
+          "info": { "name": "Get a video view.", "type": "http" },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/views/:viewId",
+            "params": [ { "name": "viewId", "value": "", "type": "path" } ]
+          },
+          "docs": "Retrieves details for a single video view."
+        },
+        {
+          "info": { "name": "List playback errors.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.fastpix.io/v1/data/errors" },
+          "docs": "Lists playback errors observed across sessions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

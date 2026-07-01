@@ -1,0 +1,102 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: FastPix
+providerId: fastpix
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- Video
+- Streaming
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of FastPix spend. FastPix bills usage-based, per-minute rates
+  across three cost dimensions - encoding, storage, and streaming (delivery) -
+  each scaling by output resolution and quality tier. Live streaming is metered
+  per streamed minute, and in-video AI features (subtitles, summaries, chapters,
+  moderation) are per-minute add-ons. There is no minimum commitment; new
+  accounts start on a $25 trial credit.
+notes: >-
+  Per-minute rates vary by resolution and quality tier and change over time;
+  verify against the FastPix pricing page during reconciliation.
+sources:
+- https://www.fastpix.io/pricing
+- https://docs.fastpix.io
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: FastPix
+serviceCategory: Media and Streaming
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: FastPix
+  ServiceCategory: Media and Streaming
+  ProviderName: FastPix
+  PublisherName: FastPix
+  InvoiceIssuerName: FastPix
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Usage-Based
+meters:
+- name: encoding_minutes
+  description: Minutes of video encoded, billed per minute by output resolution and quality tier.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - workspace
+  - resolution
+  - tier
+- name: storage_minutes
+  description: Minutes of encoded video stored, billed per stored minute by resolution.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - workspace
+  - resolution
+- name: streaming_minutes
+  description: Minutes of video delivered to viewers, billed per delivered minute by resolution.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - workspace
+  - resolution
+- name: live_minutes
+  description: Minutes of live stream ingest/processing, billed per streamed minute.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - workspace
+  - resolution
+- name: ai_minutes
+  description: Minutes processed by in-video AI features (subtitles, summaries, chapters, moderation), billed as per-minute add-ons.
+  unit: minutes
+  aggregation: sum
+  dimensions:
+  - workspace
+  - feature
+principles:
+- name: Visibility
+  description: Pull FastPix usage/billing data; track per-minute encode, storage, and delivery burn by workspace and resolution.
+- name: Allocation
+  description: Tag media metadata and use separate workspaces per team/product to map spend to cost centers.
+- name: Optimization
+  description: Cap max resolution to what viewers actually consume, use the free Standard encoding tier where fidelity allows, prune unused stored assets, and enable AI features selectively.
+- name: Accountability
+  description: Assign owners per workspace; review monthly encode/storage/delivery spend against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

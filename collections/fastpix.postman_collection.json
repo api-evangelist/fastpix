@@ -1,0 +1,290 @@
+{
+  "info": {
+    "name": "FastPix API",
+    "description": "FastPix developer video platform - on-demand, live streaming, simulcast, playback and signing keys, in-video AI, and data/views analytics. Base URL https://api.fastpix.io/v1, HTTP Basic auth (Access Token ID as username, Secret Key as password).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "basic",
+    "basic": [
+      { "key": "username", "value": "{{accessTokenId}}", "type": "string" },
+      { "key": "password", "value": "{{secretKey}}", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.fastpix.io/v1" }
+  ],
+  "item": [
+    {
+      "name": "On-Demand",
+      "item": [
+        {
+          "name": "Create media from a URL.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": {
+              "raw": "{{baseUrl}}/on-demand",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "on-demand" ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [ { \"type\": \"video\", \"url\": \"https://static.fastpix.io/sample.mp4\" } ],\n  \"accessPolicy\": \"public\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "List all media.",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/on-demand", "host": [ "{{baseUrl}}" ], "path": [ "on-demand" ] }
+          }
+        },
+        {
+          "name": "Upload media from a device.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/on-demand/upload", "host": [ "{{baseUrl}}" ], "path": [ "on-demand", "upload" ] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"corsOrigin\": \"*\",\n  \"pushMediaSettings\": { \"accessPolicy\": \"public\" }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Get a media asset by ID.",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/on-demand/:mediaId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "on-demand", ":mediaId" ],
+              "variable": [ { "key": "mediaId", "value": "" } ]
+            }
+          }
+        },
+        {
+          "name": "Update a media asset.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": {
+              "raw": "{{baseUrl}}/on-demand/:mediaId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "on-demand", ":mediaId" ],
+              "variable": [ { "key": "mediaId", "value": "" } ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata\": { \"title\": \"Updated title\" }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete a media asset.",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/on-demand/:mediaId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "on-demand", ":mediaId" ],
+              "variable": [ { "key": "mediaId", "value": "" } ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Live Streaming",
+      "item": [
+        {
+          "name": "Create a live stream.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": { "raw": "{{baseUrl}}/live/streams", "host": [ "{{baseUrl}}" ], "path": [ "live", "streams" ] },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"playbackSettings\": { \"accessPolicy\": \"public\" },\n  \"inputMediaSettings\": { \"maxResolution\": \"1080p\", \"reconnectWindow\": 60 }\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "List all live streams.",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/live/streams", "host": [ "{{baseUrl}}" ], "path": [ "live", "streams" ] }
+          }
+        },
+        {
+          "name": "Get a live stream by ID.",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/live/streams/:streamId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "live", "streams", ":streamId" ],
+              "variable": [ { "key": "streamId", "value": "" } ]
+            }
+          }
+        },
+        {
+          "name": "Delete a live stream.",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/live/streams/:streamId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "live", "streams", ":streamId" ],
+              "variable": [ { "key": "streamId", "value": "" } ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Simulcast",
+      "item": [
+        {
+          "name": "Create a simulcast target.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": {
+              "raw": "{{baseUrl}}/live/streams/:streamId/simulcast",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "live", "streams", ":streamId", "simulcast" ],
+              "variable": [ { "key": "streamId", "value": "" } ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"rtmps://live.example.com:443/app\",\n  \"streamKey\": \"<stream-key>\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Delete a simulcast target.",
+          "request": {
+            "method": "DELETE",
+            "url": {
+              "raw": "{{baseUrl}}/live/streams/:streamId/simulcast/:simulcastId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "live", "streams", ":streamId", "simulcast", ":simulcastId" ],
+              "variable": [ { "key": "streamId", "value": "" }, { "key": "simulcastId", "value": "" } ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Playback & Signing Keys",
+      "item": [
+        {
+          "name": "Create a media playback ID.",
+          "request": {
+            "method": "POST",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": {
+              "raw": "{{baseUrl}}/live/streams/:streamId/playback-ids",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "live", "streams", ":streamId", "playback-ids" ],
+              "variable": [ { "key": "streamId", "value": "" } ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accessPolicy\": \"public\"\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Create a signing key.",
+          "request": {
+            "method": "POST",
+            "url": { "raw": "{{baseUrl}}/security/signing-keys", "host": [ "{{baseUrl}}" ], "path": [ "security", "signing-keys" ] }
+          }
+        },
+        {
+          "name": "List signing keys.",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/security/signing-keys", "host": [ "{{baseUrl}}" ], "path": [ "security", "signing-keys" ] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "In-Video AI",
+      "item": [
+        {
+          "name": "Enable AI enrichment on a media asset.",
+          "request": {
+            "method": "PATCH",
+            "header": [ { "key": "Content-Type", "value": "application/json" } ],
+            "url": {
+              "raw": "{{baseUrl}}/on-demand/:mediaId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "on-demand", ":mediaId" ],
+              "variable": [ { "key": "mediaId", "value": "" } ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"summary\": true,\n  \"chapters\": true,\n  \"namedEntities\": true\n}",
+              "options": { "raw": { "language": "json" } }
+            }
+          }
+        },
+        {
+          "name": "Generate a subtitle track.",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/on-demand/:mediaId/tracks/:trackId/generate-subtitle",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "on-demand", ":mediaId", "tracks", ":trackId", "generate-subtitle" ],
+              "variable": [ { "key": "mediaId", "value": "" }, { "key": "trackId", "value": "" } ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Data & Views",
+      "item": [
+        {
+          "name": "List video views.",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/data/views", "host": [ "{{baseUrl}}" ], "path": [ "data", "views" ] }
+          }
+        },
+        {
+          "name": "Get a video view.",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/data/views/:viewId",
+              "host": [ "{{baseUrl}}" ],
+              "path": [ "data", "views", ":viewId" ],
+              "variable": [ { "key": "viewId", "value": "" } ]
+            }
+          }
+        },
+        {
+          "name": "List playback errors.",
+          "request": {
+            "method": "GET",
+            "url": { "raw": "{{baseUrl}}/data/errors", "host": [ "{{baseUrl}}" ], "path": [ "data", "errors" ] }
+          }
+        }
+      ]
+    }
+  ]
+}

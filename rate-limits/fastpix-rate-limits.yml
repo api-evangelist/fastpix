@@ -1,0 +1,62 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: FastPix
+providerId: fastpix
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: false
+tags:
+- Video
+- Streaming
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  FastPix applies per-workspace rate limits to its management REST API
+  (api.fastpix.io/v1) to protect platform stability. Limits are expressed as
+  requests per minute per workspace and apply across the on-demand, live,
+  playback, signing-keys, in-video AI, and data endpoints. Delivery
+  (streaming/playback of media itself) is metered by usage rather than throttled
+  by API request rate. Specific numeric limits are not published in a single
+  reconciled table and should be confirmed with FastPix.
+notes: >-
+  Exact per-endpoint numeric limits are not fully published; verify current
+  values in the FastPix docs or with support during reconciliation. Clients
+  should honor 429 responses and any Retry-After header.
+sources:
+- https://docs.fastpix.io
+- https://docs.fastpix.io/reference
+responseCodes:
+  throttled: 429
+limits:
+- name: API Requests Per Minute (RPM)
+  scope: workspace
+  metric: requests
+  limit: see provider documentation
+  notes: Management API request rate per workspace across all v1 endpoints.
+- name: Concurrent Live Streams
+  scope: workspace
+  metric: streams
+  limit: see provider documentation
+  notes: Number of simultaneously active live streams; higher limits on paid/enterprise plans.
+- name: Concurrent Simulcast Targets
+  scope: stream
+  metric: targets
+  limit: see provider documentation
+  notes: Number of simultaneous RTMP restream destinations per live stream.
+- name: In-Video AI Jobs
+  scope: workspace
+  metric: jobs
+  limit: see provider documentation
+  notes: Background AI enrichment jobs (subtitles, summaries, chapters, moderation) run asynchronously via webhooks.
+policies:
+- name: Tiered Limits
+  description: Limits increase from trial to pay-as-you-go to Enterprise agreements.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses.
+- name: Asynchronous Processing
+  description: Long-running encoding and AI operations complete out-of-band; poll the asset or subscribe to webhooks rather than blocking on the request.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

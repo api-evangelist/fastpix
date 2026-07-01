@@ -1,0 +1,200 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: FastPix
+providerId: fastpix
+created: '2026-07-01'
+modified: '2026-07-01'
+reconciled: true
+tags:
+- Video
+- Streaming
+- Encoding
+- Storage
+- Delivery
+- Plans
+description: >-
+  FastPix uses transparent, pay-as-you-go, per-minute pricing across three
+  usage dimensions - encoding, storage, and streaming (delivery) - with rates
+  that scale by output resolution (720p, 1080p, 1440p/2K, 2160p/4K) and by
+  quality tier. New accounts start with a free trial credit and there is no
+  minimum commitment. Live streaming is metered per streamed minute, and
+  in-video AI features are billed as add-on per-minute charges.
+notes: >-
+  Representative rates as published on the FastPix pricing page; resolution and
+  tier rates change over time - verify the current pricing page during
+  reconciliation. Encoding on the Standard/Core tier can be free at all
+  resolutions; Pro and Premium tiers add paid, higher-consistency encoding.
+sources:
+- https://www.fastpix.io/pricing
+- https://docs.fastpix.io
+plans:
+- id: fastpix-free-trial
+  name: Free Trial
+  type: trial
+  description: >-
+    New accounts receive a one-time $25 credit, good for roughly 800 minutes of
+    encoding, or 11,000 minutes of storage, or 26,000+ minutes of streaming.
+  entries:
+  - label: Trial Credit
+    name: trial_credit
+    type: flat
+    metric: credit
+    limit: 25
+    timeFrame: lifetime
+    geo: global
+    unit: 1
+    price: $25 one-time credit
+    userMultiplied: false
+  elements:
+  - name: On-Demand
+  - name: Live Streaming
+  - name: In-Video AI
+  - name: Data & Views
+- id: fastpix-pay-as-you-go
+  name: Pay-as-you-go
+  type: usage
+  description: >-
+    Per-minute metering for encoding, storage, and streaming, priced by output
+    resolution. No minimum commitment; pay only for what you use each month.
+  entries:
+  - label: Encoding 720p
+    name: encoding_720p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (Standard) up to ~$0.0214/min (Pro)
+    userMultiplied: false
+  - label: Encoding 1080p
+    name: encoding_1080p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free (Standard) up to ~$0.0267-$0.0405/min
+    userMultiplied: false
+  - label: Encoding 1440p (2K)
+    name: encoding_1440p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$0.0428-$0.0648/min
+    userMultiplied: false
+  - label: Encoding 2160p (4K)
+    name: encoding_2160p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$0.0855-$0.1296/min
+    userMultiplied: false
+  - label: Storage 1080p
+    name: storage_1080p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$0.00269-$0.00403 per stored minute
+    userMultiplied: false
+  - label: Streaming 1080p
+    name: streaming_1080p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$0.00068-$0.00103 per delivered minute
+    userMultiplied: false
+  - label: Streaming 2160p (4K)
+    name: streaming_2160p
+    type: usage
+    metric: minutes
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~$0.00217-$0.00329 per delivered minute
+    userMultiplied: false
+  elements:
+  - name: On-Demand
+  - name: Live Streaming
+  - name: Simulcast
+  - name: Playback & Signing Keys
+- id: fastpix-quality-tiers
+  name: Quality Tiers
+  type: tier
+  description: >-
+    Encoding quality tiers that trade off price against consistency and
+    fidelity. Standard/Core is free encoding for MVPs and UGC; Pro adds paid,
+    higher-consistency encoding; Premium optimizes for 4K, HDR, and cinematic
+    content.
+  entries:
+  - label: Standard / Core
+    name: tier_standard
+    type: flat
+    metric: quality
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: free encoding up to 4K
+    userMultiplied: false
+  - label: Pro
+    name: tier_pro
+    type: usage
+    metric: quality
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: paid encoding, higher consistency
+    userMultiplied: false
+  - label: Premium
+    name: tier_premium
+    type: usage
+    metric: quality
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: highest encoding, optimized for 4K/HDR
+    userMultiplied: false
+  elements:
+  - name: Encoding
+- id: fastpix-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Volume-committed pricing, dedicated support, SLAs, and negotiated terms for
+    high-scale video workloads. Contact FastPix sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Volume Pricing
+  - name: SLAs
+  - name: Dedicated Support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

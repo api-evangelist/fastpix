@@ -1,0 +1,181 @@
+aid: fastpix
+url: https://raw.githubusercontent.com/api-evangelist/fastpix/refs/heads/main/apis.yml
+name: FastPix
+kind: company
+description: FastPix is a developer-first video platform offering APIs for video
+  on-demand (upload, ingest, encoding, playback), live streaming, simulcasting,
+  secure and DRM playback, in-video AI (transcription, summaries, chapters,
+  moderation), and video views analytics. A Mux-style, pay-per-minute video
+  infrastructure with a single REST API at api.fastpix.io/v1 using Basic auth.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Video
+- Streaming
+- Live Streaming
+- Video on Demand
+- Encoding
+- Playback
+- Video Analytics
+created: '2026-07-01'
+modified: '2026-07-01'
+specificationVersion: '0.19'
+apis:
+- aid: fastpix:fastpix-on-demand-api
+  name: FastPix On-Demand API
+  tags:
+  - Video on Demand
+  - Upload
+  - Encoding
+  - Media
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.fastpix.io/reference
+  baseURL: https://api.fastpix.io/v1
+  properties:
+  - url: https://docs.fastpix.io/docs/get-started-in-5-minutes
+    type: Documentation
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+  - url: openapi/fastpix-openapi.yml
+    type: OpenAPI
+  - url: collections/fastpix.postman_collection.json
+    type: PostmanCollection
+  - url: collections/fastpix.opencollection.json
+    type: OpenCollection
+  description: Upload or import video files, then encode, store, and manage
+    on-demand media assets, tracks, MP4 downloads, source access, and clips.
+- aid: fastpix:fastpix-live-streaming-api
+  name: FastPix Live Streaming API
+  tags:
+  - Live Streaming
+  - RTMP
+  - SRT
+  - Low Latency
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.fastpix.io/docs/get-started-with-live-streaming
+  baseURL: https://api.fastpix.io/v1
+  properties:
+  - url: https://docs.fastpix.io/docs/get-started-with-live-streaming
+    type: Documentation
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+  - url: openapi/fastpix-openapi.yml
+    type: OpenAPI
+  - url: collections/fastpix.postman_collection.json
+    type: PostmanCollection
+  - url: collections/fastpix.opencollection.json
+    type: OpenCollection
+  description: Create and manage live streams over RTMPS and SRT, control
+    reconnect windows and stream state, and record live streams to on-demand
+    assets with generated live clips.
+- aid: fastpix:fastpix-simulcast-api
+  name: FastPix Simulcast API
+  tags:
+  - Simulcast
+  - Restream
+  - RTMP
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.fastpix.io/reference
+  baseURL: https://api.fastpix.io/v1
+  properties:
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+  - url: openapi/fastpix-openapi.yml
+    type: OpenAPI
+  - url: collections/fastpix.postman_collection.json
+    type: PostmanCollection
+  - url: collections/fastpix.opencollection.json
+    type: OpenCollection
+  description: Restream a single live stream to multiple third-party RTMP
+    destinations such as YouTube, Twitch, and Facebook simultaneously.
+- aid: fastpix:fastpix-playback-signing-keys-api
+  name: FastPix Playback & Signing Keys API
+  tags:
+  - Playback
+  - Signing Keys
+  - JWT
+  - DRM
+  - Security
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.fastpix.io/reference
+  baseURL: https://api.fastpix.io/v1
+  properties:
+  - url: https://docs.fastpix.io/docs/secure-playback-with-signed-urls
+    type: Documentation
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+  - url: openapi/fastpix-openapi.yml
+    type: OpenAPI
+  - url: collections/fastpix.postman_collection.json
+    type: PostmanCollection
+  - url: collections/fastpix.opencollection.json
+    type: OpenCollection
+  description: Manage playback IDs for media and live streams, and create RSA
+    signing keys used to mint JWTs for tokenized, private, and DRM-protected
+    playback.
+- aid: fastpix:fastpix-in-video-ai-api
+  name: FastPix In-Video AI API
+  tags:
+  - AI
+  - Transcription
+  - Summaries
+  - Chapters
+  - Moderation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.fastpix.io/docs/overview-of-in-video-ai-features
+  baseURL: https://api.fastpix.io/v1
+  properties:
+  - url: https://docs.fastpix.io/docs/overview-of-in-video-ai-features
+    type: Documentation
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+  - url: openapi/fastpix-openapi.yml
+    type: OpenAPI
+  - url: collections/fastpix.postman_collection.json
+    type: PostmanCollection
+  - url: collections/fastpix.opencollection.json
+    type: OpenCollection
+  description: Enrich media with AI - auto-generated subtitles and translations,
+    summaries, chapters, named-entity extraction, and content moderation - via
+    flags on the media update endpoint and subtitle generation.
+- aid: fastpix:fastpix-data-views-api
+  name: FastPix Data & Views API
+  tags:
+  - Video Analytics
+  - Views
+  - Metrics
+  - QoE
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.fastpix.io/reference
+  baseURL: https://api.fastpix.io/v1
+  properties:
+  - url: https://docs.fastpix.io/docs/video-data-overview
+    type: Documentation
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+  - url: openapi/fastpix-openapi.yml
+    type: OpenAPI
+  - url: collections/fastpix.postman_collection.json
+    type: PostmanCollection
+  - url: collections/fastpix.opencollection.json
+    type: OpenCollection
+  description: Query video views, quality-of-experience metrics, dimensions,
+    playback errors, timeseries, and breakdowns for viewer engagement and
+    delivery analytics.
+common:
+- type: GitHubOrganization
+  url: https://github.com/FastPix
+- type: LinkedIn
+  url: https://www.linkedin.com/company/fastpix
+- type: Website
+  url: https://www.fastpix.io/
+- type: Documentation
+  url: https://docs.fastpix.io
+- type: Plans
+  url: plans/fastpix-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/fastpix-rate-limits.yml
+- type: FinOps
+  url: finops/fastpix-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

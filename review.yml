@@ -1,0 +1,91 @@
+aid: fastpix
+name: FastPix
+review:
+  question: Does FastPix expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-01'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Per API Evangelist scope, HTTP Server-Sent Events (SSE) is in-scope for
+    AsyncAPI modeling and WebSocket is the primary event-driven surface of
+    interest. FastPix documents neither a public WebSocket API nor an SSE
+    endpoint on its REST management API, so no AsyncAPI document was authored.
+    FastPix's event-driven surface is delivered via outbound webhooks (HTTP
+    POST callbacks) for asynchronous media/live processing events, which are
+    HTTP request/response, not a streaming protocol modeled by AsyncAPI here.
+findings:
+  summary: |
+    FastPix does not publish a documented public WebSocket API. The management
+    platform is a REST (HTTPS) API under https://api.fastpix.io/v1 secured with
+    HTTP Basic authentication (Access Token ID as username, Secret Key as
+    password). Live video INGEST uses the RTMPS and SRT streaming protocols
+    (not a customer-facing WebSocket API), and viewer DELIVERY uses HLS/DASH
+    over HTTPS. Asynchronous processing events (upload complete, media ready,
+    live stream active/idle, AI job complete) are delivered as outbound
+    webhooks. No realtime, bidirectional, browser-facing WebSocket (ws:// or
+    wss://) API is documented for media, live, playback, signing keys,
+    in-video AI, or data/views.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.fastpix.io/v1
+      documented: true
+    - protocol: RTMPS
+      scheme: rtmps
+      note: Live stream ingest protocol; a media transport, not a documented request/response or WebSocket API surface.
+      documented: true
+    - protocol: SRT
+      scheme: srt
+      note: Alternative low-latency live ingest protocol, secured with an SRT secret key.
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      note: Outbound HTTP POST callbacks for asynchronous background events. Not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the FastPix API reference or product docs as of the review date.
+  endpointsConfirmedRest:
+    - POST   https://api.fastpix.io/v1/on-demand
+    - GET    https://api.fastpix.io/v1/on-demand
+    - POST   https://api.fastpix.io/v1/on-demand/upload
+    - GET    https://api.fastpix.io/v1/on-demand/{mediaId}
+    - PATCH  https://api.fastpix.io/v1/on-demand/{mediaId}
+    - DELETE https://api.fastpix.io/v1/on-demand/{mediaId}
+    - POST   https://api.fastpix.io/v1/live/streams
+    - GET    https://api.fastpix.io/v1/live/streams
+    - GET    https://api.fastpix.io/v1/live/streams/{streamId}
+    - DELETE https://api.fastpix.io/v1/live/streams/{streamId}
+    - POST   https://api.fastpix.io/v1/live/streams/{streamId}/simulcast
+    - POST   https://api.fastpix.io/v1/live/streams/{streamId}/playback-ids
+    - POST   https://api.fastpix.io/v1/security/signing-keys
+    - GET    https://api.fastpix.io/v1/security/signing-keys
+    - GET    https://api.fastpix.io/v1/on-demand/drm-configurations
+    - GET    https://api.fastpix.io/v1/data/views
+    - GET    https://api.fastpix.io/v1/data/views/{viewId}
+    - GET    https://api.fastpix.io/v1/data/errors
+    - GET    https://api.fastpix.io/v1/data/dimensions
+sources:
+  - url: https://docs.fastpix.io
+    type: Documentation
+    note: Overview documents a REST API at api.fastpix.io/v1 with Basic auth; no WebSocket mentioned.
+  - url: https://docs.fastpix.io/reference
+    type: APIReference
+    note: All documented management endpoints are HTTPS REST.
+  - url: https://docs.fastpix.io/docs/get-started-with-live-streaming
+    type: Documentation
+    note: Live ingest uses RTMPS/SRT and delivery uses HLS; no WebSocket API.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists to model. FastPix's
+    asynchronous events are delivered via outbound webhooks (plain HTTP POST),
+    and live media moves over RTMPS/SRT ingest and HLS/DASH delivery - none of
+    which is a WebSocket API. No AsyncAPI document was created; apis.yml
+    reflects the REST surfaces only.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
