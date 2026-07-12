@@ -162,6 +162,14 @@ apis:
     playback errors, timeseries, and breakdowns for viewer engagement and
     delivery analytics.
 common:
+- type: TrustCenter
+  url: security/fastpix-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/fastpix-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/fastpix-domain-security.yml
+- type: Authentication
+  url: authentication/fastpix-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/FastPix
 - type: LinkedIn
@@ -176,6 +184,8 @@ common:
   url: rate-limits/fastpix-rate-limits.yml
 - type: FinOps
   url: finops/fastpix-finops.yml
+- url: https://fastpix.com/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
