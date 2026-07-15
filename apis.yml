@@ -162,6 +162,8 @@ apis:
     playback errors, timeseries, and breakdowns for viewer engagement and
     delivery analytics.
 common:
+- type: AgenticAccess
+  url: agentic-access/fastpix-agentic-access.yml
 - type: TrustCenter
   url: security/fastpix-trust-center.yml
 - type: VulnerabilityDisclosure
