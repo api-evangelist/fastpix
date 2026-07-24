@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data Simulcast API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: Simulcast
+  description: Restream a live stream to third-party RTMP destinations.
+paths:
+  /live/streams/{streamId}/simulcast:
+    post:
+      tags:
+      - Simulcast
+      operationId: createSimulcast
+      summary: Create a simulcast target for a live stream
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSimulcastRequest'
+      responses:
+        '201':
+          description: Simulcast created
+  /live/streams/{streamId}/simulcast/{simulcastId}:
+    get:
+      tags:
+      - Simulcast
+      operationId: getSimulcast
+      summary: Get a simulcast target
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: simulcastId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Simulcast details
+    patch:
+      tags:
+      - Simulcast
+      operationId: updateSimulcast
+      summary: Enable or disable a simulcast target
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: simulcastId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Simulcast updated
+    delete:
+      tags:
+      - Simulcast
+      operationId: deleteSimulcast
+      summary: Delete a simulcast target
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: simulcastId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Simulcast deleted
+components:
+  schemas:
+    CreateSimulcastRequest:
+      type: object
+      required:
+      - url
+      - streamKey
+      properties:
+        url:
+          type: string
+          example: rtmps://live.example.com:443/app
+        streamKey:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.

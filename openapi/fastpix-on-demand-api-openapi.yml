@@ -1,0 +1,421 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data On-Demand API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: On-Demand
+  description: Upload, import, manage, and encode video-on-demand media.
+paths:
+  /on-demand:
+    post:
+      tags:
+      - On-Demand
+      operationId: createMedia
+      summary: Create media from a URL
+      description: Creates a new on-demand media asset by importing a publicly accessible video file URL.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMediaRequest'
+      responses:
+        '201':
+          description: Media created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaResponse'
+    get:
+      tags:
+      - On-Demand
+      operationId: listMedia
+      summary: List all media
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 20
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: A list of media assets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaListResponse'
+  /on-demand/upload:
+    post:
+      tags:
+      - On-Demand
+      operationId: createUpload
+      summary: Upload media from a device
+      description: Requests a signed URL for a direct, resumable device upload of a video file.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUploadRequest'
+      responses:
+        '201':
+          description: Signed upload URL created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResponse'
+  /on-demand/uploads:
+    get:
+      tags:
+      - On-Demand
+      operationId: listUploads
+      summary: List unused upload URLs
+      responses:
+        '200':
+          description: A list of unused uploads
+  /on-demand/upload/{uploadId}:
+    put:
+      tags:
+      - On-Demand
+      operationId: cancelUpload
+      summary: Cancel an in-progress upload
+      parameters:
+      - name: uploadId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Upload cancelled
+  /on-demand/{mediaId}:
+    get:
+      tags:
+      - On-Demand
+      operationId: getMedia
+      summary: Get a media asset by ID
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The media asset
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MediaResponse'
+    patch:
+      tags:
+      - On-Demand
+      operationId: updateMedia
+      summary: Update a media asset
+      description: Updates media metadata and enrichment flags. Used to enable in-video AI features such as summary, chapters, named entities, and moderation.
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMediaRequest'
+      responses:
+        '200':
+          description: Updated media asset
+    delete:
+      tags:
+      - On-Demand
+      operationId: deleteMedia
+      summary: Delete a media asset
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Media deleted
+  /on-demand/{mediaId}/media-clips:
+    get:
+      tags:
+      - On-Demand
+      operationId: listMediaClips
+      summary: List clips generated from a media asset
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of clips
+  /on-demand/{mediaId}/source:
+    patch:
+      tags:
+      - On-Demand
+      operationId: updateSourceAccess
+      summary: Update source access for a media asset
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Source access updated
+  /on-demand/{mediaId}/update-mp4Support:
+    patch:
+      tags:
+      - On-Demand
+      operationId: updateMp4Support
+      summary: Enable or update MP4 downloads for a media asset
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: MP4 support updated
+  /on-demand/{mediaId}/tracks:
+    post:
+      tags:
+      - On-Demand
+      operationId: addMediaTrack
+      summary: Add an audio or subtitle track to a media asset
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Track added
+  /on-demand/{mediaId}/tracks/{trackId}:
+    patch:
+      tags:
+      - On-Demand
+      operationId: updateMediaTrack
+      summary: Update a media track
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: trackId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Track updated
+    delete:
+      tags:
+      - On-Demand
+      operationId: deleteMediaTrack
+      summary: Delete a media track
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: trackId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Track deleted
+components:
+  schemas:
+    UpdateMediaRequest:
+      type: object
+      properties:
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        summary:
+          type: boolean
+          description: Enable AI-generated summary.
+        chapters:
+          type: boolean
+          description: Enable AI-generated chapters.
+        namedEntities:
+          type: boolean
+          description: Enable named-entity extraction.
+        moderation:
+          type: object
+          properties:
+            type:
+              type: string
+              example: video
+    MediaResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Media'
+    UploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            uploadId:
+              type: string
+            url:
+              type: string
+              format: uri
+    PlaybackId:
+      type: object
+      properties:
+        id:
+          type: string
+        accessPolicy:
+          type: string
+          enum:
+          - public
+          - private
+          - drm
+    Media:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - preparing
+          - ready
+          - errored
+          example: ready
+        createdAt:
+          type: string
+          format: date-time
+        duration:
+          type: string
+          example: 00:01:23
+        maxResolution:
+          type: string
+        sourceResolution:
+          type: string
+        aspectRatio:
+          type: string
+          example: '16:9'
+        playbackIds:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlaybackId'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+    CreateUploadRequest:
+      type: object
+      properties:
+        corsOrigin:
+          type: string
+          example: '*'
+        pushMediaSettings:
+          type: object
+          properties:
+            accessPolicy:
+              type: string
+              enum:
+              - public
+              - private
+              - drm
+            maxResolution:
+              type: string
+    MediaListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+    CreateMediaRequest:
+      type: object
+      required:
+      - inputs
+      properties:
+        inputs:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                example: video
+              url:
+                type: string
+                format: uri
+                example: https://static.fastpix.io/sample.mp4
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        accessPolicy:
+          type: string
+          enum:
+          - public
+          - private
+          - drm
+          example: public
+        maxResolution:
+          type: string
+          enum:
+          - 480p
+          - 720p
+          - 1080p
+          - 1440p
+          - 2160p
+          example: 1080p
+        mp4Support:
+          type: string
+          enum:
+          - none
+          - capped_4k
+          - audioOnly
+          example: none
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.

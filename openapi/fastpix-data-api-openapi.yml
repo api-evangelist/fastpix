@@ -1,0 +1,154 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: Data
+  description: Video views, metrics, dimensions, errors, and timeseries analytics.
+paths:
+  /data/dimensions:
+    get:
+      tags:
+      - Data
+      operationId: listDimensions
+      summary: List available viewer/session dimensions
+      responses:
+        '200':
+          description: A list of dimensions
+  /data/dimensions/{dimensionId}:
+    get:
+      tags:
+      - Data
+      operationId: listDimensionValues
+      summary: List values for a dimension
+      parameters:
+      - name: dimensionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of dimension values
+  /data/views:
+    get:
+      tags:
+      - Data
+      operationId: listVideoViews
+      summary: List video views
+      responses:
+        '200':
+          description: A list of video views
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViewsListResponse'
+  /data/views/{viewId}:
+    get:
+      tags:
+      - Data
+      operationId: getVideoView
+      summary: Get details for a single video view
+      parameters:
+      - name: viewId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Video view details
+  /data/errors:
+    get:
+      tags:
+      - Data
+      operationId: listErrors
+      summary: List playback errors
+      responses:
+        '200':
+          description: A list of errors
+  /data/metrics/timeseries/{metricId}:
+    get:
+      tags:
+      - Data
+      operationId: getTimeseriesData
+      summary: Get timeseries data for a metric
+      parameters:
+      - name: metricId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Timeseries data points
+  /data/metrics/breakdown/{metricId}:
+    get:
+      tags:
+      - Data
+      operationId: getMetricBreakdown
+      summary: Get a metric broken down by a dimension
+      parameters:
+      - name: metricId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Breakdown values
+  /data/metrics/overall/{metricId}:
+    get:
+      tags:
+      - Data
+      operationId: getOverallMetric
+      summary: Get overall values for a metric
+      parameters:
+      - name: metricId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Overall metric values
+components:
+  schemas:
+    ViewsListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              viewId:
+                type: string
+              viewerId:
+                type: string
+              playbackId:
+                type: string
+              watchTime:
+                type: integer
+              bufferingCount:
+                type: integer
+              startupTime:
+                type: integer
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.

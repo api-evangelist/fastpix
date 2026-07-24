@@ -1,0 +1,175 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data Live Streaming API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: Live Streaming
+  description: Create and manage live streams and their playback.
+paths:
+  /live/streams:
+    post:
+      tags:
+      - Live Streaming
+      operationId: createStream
+      summary: Create a new live stream
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateStreamRequest'
+      responses:
+        '201':
+          description: Live stream created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamResponse'
+    get:
+      tags:
+      - Live Streaming
+      operationId: listStreams
+      summary: List all live streams
+      responses:
+        '200':
+          description: A list of live streams
+  /live/streams/{streamId}:
+    get:
+      tags:
+      - Live Streaming
+      operationId: getStream
+      summary: Get a live stream by ID
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The live stream
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamResponse'
+    patch:
+      tags:
+      - Live Streaming
+      operationId: updateStream
+      summary: Update a live stream
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Live stream updated
+    delete:
+      tags:
+      - Live Streaming
+      operationId: deleteStream
+      summary: Delete a live stream
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Live stream deleted
+  /live/streams/{streamId}/live-clips:
+    get:
+      tags:
+      - Live Streaming
+      operationId: listLiveClips
+      summary: List clips generated from a live stream
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: A list of live clips
+components:
+  schemas:
+    StreamResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            streamId:
+              type: string
+            streamKey:
+              type: string
+            srtSecretKey:
+              type: string
+            status:
+              type: string
+              enum:
+              - idle
+              - active
+              - disabled
+            playbackIds:
+              type: array
+              items:
+                $ref: '#/components/schemas/PlaybackId'
+    PlaybackId:
+      type: object
+      properties:
+        id:
+          type: string
+        accessPolicy:
+          type: string
+          enum:
+          - public
+          - private
+          - drm
+    CreateStreamRequest:
+      type: object
+      properties:
+        playbackSettings:
+          type: object
+          properties:
+            accessPolicy:
+              type: string
+              enum:
+              - public
+              - private
+        inputMediaSettings:
+          type: object
+          properties:
+            maxResolution:
+              type: string
+              example: 1080p
+            reconnectWindow:
+              type: integer
+              example: 60
+            mediaPolicy:
+              type: string
+              enum:
+              - public
+              - private
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.

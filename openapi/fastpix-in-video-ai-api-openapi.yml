@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data In-Video AI API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: In-Video AI
+  description: AI-driven media enrichment - summaries, chapters, moderation, named entities, subtitles.
+paths:
+  /on-demand/{mediaId}/tracks/{trackId}/generate-subtitle:
+    post:
+      tags:
+      - In-Video AI
+      operationId: generateSubtitleTrack
+      summary: Generate a subtitle track from an audio track
+      parameters:
+      - name: mediaId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: trackId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Subtitle track generation started
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.

@@ -1,0 +1,79 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data Playback API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: Playback
+  description: Manage playback IDs for media and live streams.
+paths:
+  /live/streams/{streamId}/playback-ids:
+    post:
+      tags:
+      - Playback
+      operationId: createStreamPlaybackId
+      summary: Create a playback ID for a live stream
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Playback ID created
+  /live/streams/{streamId}/playback-ids/{playbackId}:
+    get:
+      tags:
+      - Playback
+      operationId: getStreamPlaybackId
+      summary: Get a live stream playback ID
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: playbackId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Playback ID details
+    delete:
+      tags:
+      - Playback
+      operationId: deleteStreamPlaybackId
+      summary: Delete a live stream playback ID
+      parameters:
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: playbackId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Playback ID deleted
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.

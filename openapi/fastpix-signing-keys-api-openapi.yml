@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: FastPix Data Signing Keys API
+  version: '1.0'
+  description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
+  contact:
+    name: FastPix
+    url: https://www.fastpix.io
+  x-logo:
+    url: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+servers:
+- url: https://api.fastpix.io/v1
+  description: FastPix production API
+security:
+- basicAuth: []
+tags:
+- name: Signing Keys
+  description: Manage keys used to sign JWTs for secure, tokenized playback.
+paths:
+  /security/signing-keys:
+    post:
+      tags:
+      - Signing Keys
+      operationId: createSigningKey
+      summary: Create a new signing key
+      description: Generates an RSA key pair used to sign JWTs for tokenized, secure playback.
+      responses:
+        '201':
+          description: Signing key created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SigningKeyResponse'
+    get:
+      tags:
+      - Signing Keys
+      operationId: listSigningKeys
+      summary: List all signing keys
+      responses:
+        '200':
+          description: A list of signing keys
+  /security/signing-keys/{signingKeyId}:
+    get:
+      tags:
+      - Signing Keys
+      operationId: getSigningKey
+      summary: Get a signing key by ID
+      parameters:
+      - name: signingKeyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Signing key details
+    delete:
+      tags:
+      - Signing Keys
+      operationId: deleteSigningKey
+      summary: Delete a signing key
+      parameters:
+      - name: signingKeyId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Signing key deleted
+components:
+  schemas:
+    SigningKeyResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            privateKey:
+              type: string
+              description: Base64-encoded PEM private key (returned once).
+            createdAt:
+              type: string
+              format: date-time
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication. Use your FastPix Access Token ID as the username and your Secret Key as the password.
