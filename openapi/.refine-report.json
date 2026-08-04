@@ -1,0 +1,28 @@
+{
+  "provider": "fastpix",
+  "sources": [
+    "fastpix-data-api-openapi.yml",
+    "fastpix-drm-api-openapi.yml",
+    "fastpix-in-video-ai-api-openapi.yml",
+    "fastpix-live-streaming-api-openapi.yml",
+    "fastpix-on-demand-api-openapi.yml",
+    "fastpix-playback-api-openapi.yml",
+    "fastpix-signing-keys-api-openapi.yml",
+    "fastpix-simulcast-api-openapi.yml"
+  ],
+  "outputs": [
+    "fastpix-data-api-openapi.yml",
+    "fastpix-drm-api-openapi.yml",
+    "fastpix-in-video-ai-api-openapi.yml",
+    "fastpix-live-streaming-api-openapi.yml",
+    "fastpix-on-demand-api-openapi.yml",
+    "fastpix-playback-api-openapi.yml",
+    "fastpix-signing-keys-api-openapi.yml",
+    "fastpix-simulcast-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
