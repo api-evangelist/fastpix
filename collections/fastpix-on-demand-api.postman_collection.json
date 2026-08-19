@@ -1,0 +1,1319 @@
+{
+  "item": [
+    {
+      "id": "058a9236-6380-4abf-a427-07432592b448",
+      "name": "On-Demand",
+      "description": {
+        "content": "Upload, import, manage, and encode video-on-demand media.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "35cab02e-7fda-45a2-9535-3a6c2afeb1fe",
+          "name": "Create media from a URL",
+          "request": {
+            "name": "Create media from a URL",
+            "description": {
+              "content": "Creates a new on-demand media asset by importing a publicly accessible video file URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "on-demand"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"inputs\": [\n    {\n      \"type\": \"<string>\",\n      \"url\": \"<uri>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"url\": \"<uri>\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"accessPolicy\": \"<string>\",\n  \"maxResolution\": \"<string>\",\n  \"mp4Support\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5b1a5980-2724-40d6-8798-278e0e59ce17",
+              "name": "Media created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"inputs\": [\n    {\n      \"type\": \"video\",\n      \"url\": \"https://static.fastpix.io/sample.mp4\"\n    },\n    {\n      \"type\": \"video\",\n      \"url\": \"https://static.fastpix.io/sample.mp4\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"accessPolicy\": \"public\",\n  \"maxResolution\": \"1080p\",\n  \"mp4Support\": \"none\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"ready\",\n    \"createdAt\": \"1946-11-12T02:48:14.099Z\",\n    \"duration\": \"00:01:23\",\n    \"maxResolution\": \"string\",\n    \"sourceResolution\": \"string\",\n    \"aspectRatio\": \"16:9\",\n    \"playbackIds\": [\n      {\n        \"id\": \"string\",\n        \"accessPolicy\": \"private\"\n      },\n      {\n        \"id\": \"string\",\n        \"accessPolicy\": \"drm\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7f0a75be-eac3-48a3-8fe6-60d313e89e25",
+          "name": "List all media",
+          "request": {
+            "name": "List all media",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5caf6f09-8ab8-45ce-8378-95ba2b118a17",
+              "name": "A list of media assets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"status\": \"ready\",\n      \"createdAt\": \"1952-04-09T07:31:24.407Z\",\n      \"duration\": \"00:01:23\",\n      \"maxResolution\": \"string\",\n      \"sourceResolution\": \"string\",\n      \"aspectRatio\": \"16:9\",\n      \"playbackIds\": [\n        {\n          \"id\": \"string\",\n          \"accessPolicy\": \"drm\"\n        },\n        {\n          \"id\": \"string\",\n          \"accessPolicy\": \"drm\"\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\",\n        \"key_3\": \"string\",\n        \"key_4\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"status\": \"ready\",\n      \"createdAt\": \"1953-06-11T13:54:40.051Z\",\n      \"duration\": \"00:01:23\",\n      \"maxResolution\": \"string\",\n      \"sourceResolution\": \"string\",\n      \"aspectRatio\": \"16:9\",\n      \"playbackIds\": [\n        {\n          \"id\": \"string\",\n          \"accessPolicy\": \"drm\"\n        },\n        {\n          \"id\": \"string\",\n          \"accessPolicy\": \"public\"\n        }\n      ],\n      \"metadata\": {\n        \"key_0\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c8a9e4c-64dc-4fb7-9ce7-f2b1d462d08e",
+          "name": "Upload media from a device",
+          "request": {
+            "name": "Upload media from a device",
+            "description": {
+              "content": "Requests a signed URL for a direct, resumable device upload of a video file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "on-demand",
+                "upload"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"corsOrigin\": \"<string>\",\n  \"pushMediaSettings\": {\n    \"accessPolicy\": \"<string>\",\n    \"maxResolution\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7fd7a2c-54a3-4662-9b5e-3d4225e7bb51",
+              "name": "Signed upload URL created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    "upload"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"corsOrigin\": \"*\",\n  \"pushMediaSettings\": {\n    \"accessPolicy\": \"<string>\",\n    \"maxResolution\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"uploadId\": \"string\",\n    \"url\": \"https://iLlTXBjUIdNaeWFueXJQVNqgaHGTi.ybgeV3KB.TQvH9hbzWoZhuX2FKurwyxouwx\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1d06996-5e90-43d3-b8be-a782fa2c6227",
+          "name": "List unused upload URLs",
+          "request": {
+            "name": "List unused upload URLs",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                "uploads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57b46a95-2e7d-483d-8b27-fc4ea5f07425",
+              "name": "A list of unused uploads",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    "uploads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9594565-7297-46bb-894a-fd3b04ec616e",
+          "name": "Cancel an in-progress upload",
+          "request": {
+            "name": "Cancel an in-progress upload",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                "upload",
+                ":uploadId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "uploadId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PUT",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "25d2930e-8b5f-4a7f-81e0-276dfe09c26a",
+              "name": "Upload cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    "upload",
+                    ":uploadId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "uploadId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2f0cf469-0359-4e96-ab42-f42c5747c833",
+          "name": "Get a media asset by ID",
+          "request": {
+            "name": "Get a media asset by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06d96ba8-2ac4-476f-a71c-c81e55806e1d",
+              "name": "The media asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"data\": {\n    \"id\": \"string\",\n    \"status\": \"ready\",\n    \"createdAt\": \"1947-04-07T02:31:47.632Z\",\n    \"duration\": \"00:01:23\",\n    \"maxResolution\": \"string\",\n    \"sourceResolution\": \"string\",\n    \"aspectRatio\": \"16:9\",\n    \"playbackIds\": [\n      {\n        \"id\": \"string\",\n        \"accessPolicy\": \"public\"\n      },\n      {\n        \"id\": \"string\",\n        \"accessPolicy\": \"drm\"\n      }\n    ],\n    \"metadata\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e95bfcb-24e6-42b4-8238-8f8fde50b837",
+          "name": "Update a media asset",
+          "request": {
+            "name": "Update a media asset",
+            "description": {
+              "content": "Updates media metadata and enrichment flags. Used to enable in-video AI features such as summary, chapters, named entities, and moderation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"metadata\": {\n    \"key_0\": \"<string>\"\n  },\n  \"summary\": \"<boolean>\",\n  \"chapters\": \"<boolean>\",\n  \"namedEntities\": \"<boolean>\",\n  \"moderation\": {\n    \"type\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8927c54e-bb9f-413a-9720-c362e4aa2d15",
+              "name": "Updated media asset",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"metadata\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"summary\": \"<boolean>\",\n  \"chapters\": \"<boolean>\",\n  \"namedEntities\": \"<boolean>\",\n  \"moderation\": {\n    \"type\": \"video\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bb7b7dd2-f8f1-47f1-8f7b-6a6a4257805f",
+          "name": "Delete a media asset",
+          "request": {
+            "name": "Delete a media asset",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "63ca6b8b-1b48-4414-976f-1f55f4a3d644",
+              "name": "Media deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9e6510e5-6d22-434d-b005-d347b36a3682",
+          "name": "List clips generated from a media asset",
+          "request": {
+            "name": "List clips generated from a media asset",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId",
+                "media-clips"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "294fade9-d39c-459a-8be2-b8a4b37cf631",
+              "name": "A list of clips",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId",
+                    "media-clips"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f6913f5-1608-49df-8b18-dd2a92af32e1",
+          "name": "Update source access for a media asset",
+          "request": {
+            "name": "Update source access for a media asset",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId",
+                "source"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dda4befc-c09f-41f0-a3ad-62fd7fb08584",
+              "name": "Source access updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId",
+                    "source"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "114f8986-2ebf-4f08-89a2-a8eca6c18799",
+          "name": "Enable or update MP4 downloads for a media asset",
+          "request": {
+            "name": "Enable or update MP4 downloads for a media asset",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId",
+                "update-mp4Support"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03a026b0-17a7-4021-83f9-254023c1017c",
+              "name": "MP4 support updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId",
+                    "update-mp4Support"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe5c3b78-b014-4e9c-897a-2378c656faae",
+          "name": "Add an audio or subtitle track to a media asset",
+          "request": {
+            "name": "Add an audio or subtitle track to a media asset",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId",
+                "tracks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8643c5b0-6deb-40c3-a372-d8393034acde",
+              "name": "Track added",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId",
+                    "tracks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "953ec1bb-c47b-44c4-ab17-c854d59f0bf9",
+          "name": "Update a media track",
+          "request": {
+            "name": "Update a media track",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId",
+                "tracks",
+                ":trackId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c493b52-cb89-4006-b000-01882a62f65f",
+              "name": "Track updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId",
+                    "tracks",
+                    ":trackId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4cb85b61-3d42-43e8-8de5-80dd4b072f19",
+          "name": "Delete a media track",
+          "request": {
+            "name": "Delete a media track",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                ":mediaId",
+                "tracks",
+                ":trackId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mediaId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "trackId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89e06e07-99f2-482f-b979-6d211e56c1df",
+              "name": "Track deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    ":mediaId",
+                    "tracks",
+                    ":trackId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mediaId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "trackId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fastpix.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f8440f71-3e0c-49db-8da2-9095aaa68a6b",
+    "name": "FastPix Data On-Demand API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.\n\nContact Support:\n Name: FastPix",
+      "type": "text/plain"
+    }
+  }
+}

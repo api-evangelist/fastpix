@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data Signing Keys API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Signing Keys",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all signing keys",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/security/signing-keys"
+          },
+          "docs": "List all signing keys"
+        },
+        {
+          "info": {
+            "name": "Create a new signing key",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/security/signing-keys"
+          },
+          "docs": "Generates an RSA key pair used to sign JWTs for tokenized, secure playback."
+        },
+        {
+          "info": {
+            "name": "Get a signing key by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/security/signing-keys/:signingKeyId",
+            "params": [
+              {
+                "name": "signingKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a signing key by ID"
+        },
+        {
+          "info": {
+            "name": "Delete a signing key",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/security/signing-keys/:signingKeyId",
+            "params": [
+              {
+                "name": "signingKeyId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a signing key"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

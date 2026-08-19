@@ -1,0 +1,123 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data Live Streaming API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Live Streaming",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all live streams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/live/streams"
+          },
+          "docs": "List all live streams"
+        },
+        {
+          "info": {
+            "name": "Create a new live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/live/streams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new live stream"
+        },
+        {
+          "info": {
+            "name": "Get a live stream by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a live stream by ID"
+        },
+        {
+          "info": {
+            "name": "Update a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a live stream"
+        },
+        {
+          "info": {
+            "name": "Delete a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a live stream"
+        },
+        {
+          "info": {
+            "name": "List clips generated from a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/live-clips",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List clips generated from a live stream"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "0c65d01a-5714-4056-9419-5fa605ee5f17",
+      "name": "DRM",
+      "description": {
+        "content": "Retrieve DRM configurations for protected playback.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "36aacc08-9907-4b4f-b31b-7345fa6a9b0e",
+          "name": "List DRM configurations",
+          "request": {
+            "name": "List DRM configurations",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                "drm-configurations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66cdfe64-7ac2-4528-a8da-038e230d179d",
+              "name": "A list of DRM configurations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    "drm-configurations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee9d8222-59b8-42ff-9d24-0c434f915adc",
+          "name": "Get a DRM configuration by ID",
+          "request": {
+            "name": "Get a DRM configuration by ID",
+            "description": {},
+            "url": {
+              "path": [
+                "on-demand",
+                "drm-configurations",
+                ":drmConfigurationId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "drmConfigurationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edb1f7f1-cf90-43ff-b820-2a442bec9eff",
+              "name": "DRM configuration details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "on-demand",
+                    "drm-configurations",
+                    ":drmConfigurationId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "drmConfigurationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fastpix.io/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ce0fb4b3-86b5-4f2c-8c80-8c3eda64beea",
+    "name": "FastPix Data DRM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.\n\nContact Support:\n Name: FastPix",
+      "type": "text/plain"
+    }
+  }
+}

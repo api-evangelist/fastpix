@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data Simulcast API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Simulcast",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a simulcast target for a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/simulcast",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a simulcast target for a live stream"
+        },
+        {
+          "info": {
+            "name": "Get a simulcast target",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/simulcast/:simulcastId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "simulcastId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a simulcast target"
+        },
+        {
+          "info": {
+            "name": "Enable or disable a simulcast target",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/simulcast/:simulcastId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "simulcastId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable or disable a simulcast target"
+        },
+        {
+          "info": {
+            "name": "Delete a simulcast target",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/simulcast/:simulcastId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "simulcastId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a simulcast target"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

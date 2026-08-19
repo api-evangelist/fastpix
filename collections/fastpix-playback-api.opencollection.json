@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data Playback API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Playback",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a playback ID for a live stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/playback-ids",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Create a playback ID for a live stream"
+        },
+        {
+          "info": {
+            "name": "Get a live stream playback ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/playback-ids/:playbackId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "playbackId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a live stream playback ID"
+        },
+        {
+          "info": {
+            "name": "Delete a live stream playback ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/live/streams/:streamId/playback-ids/:playbackId",
+            "params": [
+              {
+                "name": "streamId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "playbackId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a live stream playback ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

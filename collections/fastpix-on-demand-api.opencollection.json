@@ -1,0 +1,283 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data On-Demand API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "On-Demand",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all media",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all media"
+        },
+        {
+          "info": {
+            "name": "Create media from a URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new on-demand media asset by importing a publicly accessible video file URL."
+        },
+        {
+          "info": {
+            "name": "Upload media from a device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand/upload",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Requests a signed URL for a direct, resumable device upload of a video file."
+        },
+        {
+          "info": {
+            "name": "List unused upload URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand/uploads"
+          },
+          "docs": "List unused upload URLs"
+        },
+        {
+          "info": {
+            "name": "Cancel an in-progress upload",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.fastpix.io/v1/on-demand/upload/:uploadId",
+            "params": [
+              {
+                "name": "uploadId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Cancel an in-progress upload"
+        },
+        {
+          "info": {
+            "name": "Get a media asset by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a media asset by ID"
+        },
+        {
+          "info": {
+            "name": "Update a media asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates media metadata and enrichment flags. Used to enable in-video AI features such as summary, chapters, named entities, and moderation."
+        },
+        {
+          "info": {
+            "name": "Delete a media asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a media asset"
+        },
+        {
+          "info": {
+            "name": "List clips generated from a media asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/media-clips",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List clips generated from a media asset"
+        },
+        {
+          "info": {
+            "name": "Update source access for a media asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/source",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update source access for a media asset"
+        },
+        {
+          "info": {
+            "name": "Enable or update MP4 downloads for a media asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/update-mp4Support",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Enable or update MP4 downloads for a media asset"
+        },
+        {
+          "info": {
+            "name": "Add an audio or subtitle track to a media asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/tracks",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Add an audio or subtitle track to a media asset"
+        },
+        {
+          "info": {
+            "name": "Update a media track",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/tracks/:trackId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update a media track"
+        },
+        {
+          "info": {
+            "name": "Delete a media track",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/tracks/:trackId",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a media track"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

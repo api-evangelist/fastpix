@@ -1,0 +1,148 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available viewer/session dimensions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/dimensions"
+          },
+          "docs": "List available viewer/session dimensions"
+        },
+        {
+          "info": {
+            "name": "List values for a dimension",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/dimensions/:dimensionId",
+            "params": [
+              {
+                "name": "dimensionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List values for a dimension"
+        },
+        {
+          "info": {
+            "name": "List video views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/views"
+          },
+          "docs": "List video views"
+        },
+        {
+          "info": {
+            "name": "Get details for a single video view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/views/:viewId",
+            "params": [
+              {
+                "name": "viewId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get details for a single video view"
+        },
+        {
+          "info": {
+            "name": "List playback errors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/errors"
+          },
+          "docs": "List playback errors"
+        },
+        {
+          "info": {
+            "name": "Get timeseries data for a metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/metrics/timeseries/:metricId",
+            "params": [
+              {
+                "name": "metricId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get timeseries data for a metric"
+        },
+        {
+          "info": {
+            "name": "Get a metric broken down by a dimension",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/metrics/breakdown/:metricId",
+            "params": [
+              {
+                "name": "metricId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a metric broken down by a dimension"
+        },
+        {
+          "info": {
+            "name": "Get overall values for a metric",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/data/metrics/overall/:metricId",
+            "params": [
+              {
+                "name": "metricId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get overall values for a metric"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

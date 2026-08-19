@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data DRM API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "DRM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List DRM configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand/drm-configurations"
+          },
+          "docs": "List DRM configurations"
+        },
+        {
+          "info": {
+            "name": "Get a DRM configuration by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fastpix.io/v1/on-demand/drm-configurations/:drmConfigurationId",
+            "params": [
+              {
+                "name": "drmConfigurationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a DRM configuration by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

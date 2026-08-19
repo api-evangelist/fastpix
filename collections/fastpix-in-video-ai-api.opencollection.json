@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FastPix Data In-Video AI API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "In-Video AI",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a subtitle track from an audio track",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fastpix.io/v1/on-demand/:mediaId/tracks/:trackId/generate-subtitle",
+            "params": [
+              {
+                "name": "mediaId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "trackId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Generate a subtitle track from an audio track"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
