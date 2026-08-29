@@ -1,0 +1,44 @@
+slug: fastpix
+provider: FastPix
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: DRM
+  spec_file: fastpix-drm-api-openapi.yml
+  capability_id: BC-3740.50
+  capability_id_l1: BC-3740
+  capability_name: Content Protection & DRM Management
+  confidence: 0.9
+  evidence: GET /on-demand/drm-configurations  listDrmConfigurations  List DRM configurations
+  reason: Operations manage digital rights management configurations for secure video playback, which
+    is exactly content protection and DRM operation within content distribution.
+- tag: Live Streaming
+  spec_file: fastpix-live-streaming-api-openapi.yml
+  capability_id: BC-3740.20
+  capability_id_l1: BC-3740
+  capability_name: OTT & Streaming Delivery
+  confidence: 0.85
+  evidence: POST /live/streams  createStream  Create a new live stream; GET /live/streams/{streamId}/live-clips  listLiveClips
+  reason: Creating and operating live streams with playback IDs is streaming delivery operation for direct-to-consumer/partner
+    services, not live production direction. Schemas CreateStreamRequest/PlaybackId confirm delivery-side
+    stream provisioning.
+- tag: In-Video AI
+  spec_file: fastpix-in-video-ai-api-openapi.yml
+  capability_id: BC-3700.60
+  capability_id_l1: BC-3700
+  capability_name: Localisation & Versioning Management
+  confidence: 0.8
+  evidence: POST /on-demand/{mediaId}/tracks/{trackId}/generate-subtitle  generateSubtitleTrack  Generate
+    a subtitle track from an audio track
+  reason: Automated subtitle generation for a media asset is subtitling/captioning work, i.e. localisation
+    and versioning of content. Single operation, so some residual ambiguity with asset metadata work.

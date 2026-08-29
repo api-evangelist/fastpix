@@ -262,6 +262,9 @@ apis:
   - type: Documentation
     url: https://docs.fastpix.io/docs/video-data-overview
 common:
+- type: CapabilityMap
+  url: capabilities/fastpix-capability-edges.yml
+  name: FastPix Business Capability Map
 - type: AgenticAccess
   url: agentic-access/fastpix-agentic-access.yml
 - type: TrustCenter
