@@ -7,6 +7,18 @@ description: FastPix is a developer-first video platform offering APIs for video
   secure and DRM playback, in-video AI (transcription, summaries, chapters,
   moderation), and video views analytics. A Mux-style, pay-per-minute video
   infrastructure with a single REST API at api.fastpix.io/v1 using Basic auth.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
