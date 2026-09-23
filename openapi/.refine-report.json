@@ -1,18 +1,11 @@
 {
   "provider": "fastpix",
   "sources": [
-    "fastpix-data-api-openapi.yml",
-    "fastpix-drm-api-openapi.yml",
-    "fastpix-in-video-ai-api-openapi.yml",
-    "fastpix-live-streaming-api-openapi.yml",
-    "fastpix-on-demand-api-openapi.yml",
-    "fastpix-playback-api-openapi.yml",
-    "fastpix-signing-keys-api-openapi.yml",
-    "fastpix-simulcast-api-openapi.yml"
+    "_original/fastpix-openapi.yml"
   ],
   "outputs": [
-    "fastpix-data-api-openapi.yml",
     "fastpix-drm-api-openapi.yml",
+    "fastpix-data-api-openapi.yml",
     "fastpix-in-video-ai-api-openapi.yml",
     "fastpix-live-streaming-api-openapi.yml",
     "fastpix-on-demand-api-openapi.yml",
@@ -23,6 +16,19 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fastpix-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "fastpix-data-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-drm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-in-video-ai-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-live-streaming-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-on-demand-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-playback-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-signing-keys-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "fastpix-simulcast-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: FastPix Data On-Demand API
+  title: FastPix On Demand API
   version: '1.0'
   description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
   contact:
@@ -280,37 +280,6 @@ components:
             type:
               type: string
               example: video
-    MediaResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          $ref: '#/components/schemas/Media'
-    UploadResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: object
-          properties:
-            uploadId:
-              type: string
-            url:
-              type: string
-              format: uri
-    PlaybackId:
-      type: object
-      properties:
-        id:
-          type: string
-        accessPolicy:
-          type: string
-          enum:
-          - public
-          - private
-          - drm
     Media:
       type: object
       properties:
@@ -361,15 +330,6 @@ components:
               - drm
             maxResolution:
               type: string
-    MediaListResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
     CreateMediaRequest:
       type: object
       required:
@@ -414,6 +374,46 @@ components:
           - capped_4k
           - audioOnly
           example: none
+    MediaResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Media'
+    MediaListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+    UploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            uploadId:
+              type: string
+            url:
+              type: string
+              format: uri
+    PlaybackId:
+      type: object
+      properties:
+        id:
+          type: string
+        accessPolicy:
+          type: string
+          enum:
+          - public
+          - private
+          - drm
   securitySchemes:
     basicAuth:
       type: http

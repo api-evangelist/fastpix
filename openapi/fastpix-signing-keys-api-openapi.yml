@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: FastPix Data Signing Keys API
+  title: FastPix Signing Keys API
   version: '1.0'
   description: FastPix is a developer-first video platform providing APIs for video on-demand (upload, ingest, encode, playback), live streaming, simulcasting, secure playback with signing keys and DRM, in-video AI (transcription, summaries, chapters, moderation, named entities), and video data / views analytics. All endpoints are served under the versioned base URL and secured with HTTP Basic authentication using an Access Token ID (username) and Secret Key (password) generated in the FastPix dashboard.
   contact:
