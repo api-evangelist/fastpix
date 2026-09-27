@@ -108,6 +108,17 @@ paths:
           description: A list of live clips
 components:
   schemas:
+    PlaybackId:
+      type: object
+      properties:
+        id:
+          type: string
+        accessPolicy:
+          type: string
+          enum:
+          - public
+          - private
+          - drm
     StreamResponse:
       type: object
       properties:
@@ -132,17 +143,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/PlaybackId'
-    PlaybackId:
-      type: object
-      properties:
-        id:
-          type: string
-        accessPolicy:
-          type: string
-          enum:
-          - public
-          - private
-          - drm
     CreateStreamRequest:
       type: object
       properties:

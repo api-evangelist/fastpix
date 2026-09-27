@@ -258,28 +258,39 @@ paths:
           description: Track deleted
 components:
   schemas:
-    UpdateMediaRequest:
+    CreateUploadRequest:
       type: object
       properties:
-        metadata:
-          type: object
-          additionalProperties:
-            type: string
-        summary:
-          type: boolean
-          description: Enable AI-generated summary.
-        chapters:
-          type: boolean
-          description: Enable AI-generated chapters.
-        namedEntities:
-          type: boolean
-          description: Enable named-entity extraction.
-        moderation:
+        corsOrigin:
+          type: string
+          example: '*'
+        pushMediaSettings:
           type: object
           properties:
-            type:
+            accessPolicy:
               type: string
-              example: video
+              enum:
+              - public
+              - private
+              - drm
+            maxResolution:
+              type: string
+    MediaListResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
+    MediaResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          $ref: '#/components/schemas/Media'
     Media:
       type: object
       properties:
@@ -313,23 +324,6 @@ components:
           type: object
           additionalProperties:
             type: string
-    CreateUploadRequest:
-      type: object
-      properties:
-        corsOrigin:
-          type: string
-          example: '*'
-        pushMediaSettings:
-          type: object
-          properties:
-            accessPolicy:
-              type: string
-              enum:
-              - public
-              - private
-              - drm
-            maxResolution:
-              type: string
     CreateMediaRequest:
       type: object
       required:
@@ -374,22 +368,28 @@ components:
           - capped_4k
           - audioOnly
           example: none
-    MediaResponse:
+    UpdateMediaRequest:
       type: object
       properties:
-        success:
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        summary:
           type: boolean
-        data:
-          $ref: '#/components/schemas/Media'
-    MediaListResponse:
-      type: object
-      properties:
-        success:
+          description: Enable AI-generated summary.
+        chapters:
           type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
+          description: Enable AI-generated chapters.
+        namedEntities:
+          type: boolean
+          description: Enable named-entity extraction.
+        moderation:
+          type: object
+          properties:
+            type:
+              type: string
+              example: video
     UploadResponse:
       type: object
       properties:
