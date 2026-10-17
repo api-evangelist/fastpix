@@ -258,6 +258,19 @@ paths:
           description: Track deleted
 components:
   schemas:
+    UploadResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        data:
+          type: object
+          properties:
+            uploadId:
+              type: string
+            url:
+              type: string
+              format: uri
     CreateMediaRequest:
       type: object
       required:
@@ -302,19 +315,6 @@ components:
           - capped_4k
           - audioOnly
           example: none
-    UploadResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        data:
-          type: object
-          properties:
-            uploadId:
-              type: string
-            url:
-              type: string
-              format: uri
     Media:
       type: object
       properties:
@@ -348,15 +348,23 @@ components:
           type: object
           additionalProperties:
             type: string
-    MediaListResponse:
+    CreateUploadRequest:
       type: object
       properties:
-        success:
-          type: boolean
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Media'
+        corsOrigin:
+          type: string
+          example: '*'
+        pushMediaSettings:
+          type: object
+          properties:
+            accessPolicy:
+              type: string
+              enum:
+              - public
+              - private
+              - drm
+            maxResolution:
+              type: string
     PlaybackId:
       type: object
       properties:
@@ -397,23 +405,15 @@ components:
           type: boolean
         data:
           $ref: '#/components/schemas/Media'
-    CreateUploadRequest:
+    MediaListResponse:
       type: object
       properties:
-        corsOrigin:
-          type: string
-          example: '*'
-        pushMediaSettings:
-          type: object
-          properties:
-            accessPolicy:
-              type: string
-              enum:
-              - public
-              - private
-              - drm
-            maxResolution:
-              type: string
+        success:
+          type: boolean
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Media'
   securitySchemes:
     basicAuth:
       type: http
