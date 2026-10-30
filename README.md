@@ -1,4 +1,4 @@
-# FastPix (fastpix)
+# FastPix
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,168 +66,132 @@
 
 FastPix is a developer-first video platform offering APIs for video on-demand (upload, ingest, encoding, playback), live streaming, simulcasting, secure and DRM playback, in-video AI (transcription, summaries, chapters, moderation), and video views analytics. A Mux-style, pay-per-minute video infrastructure with a single REST API at api.fastpix.io/v1 using Basic auth.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/fastpix/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/fastpix/refs/heads/main/apis.yml)
+**Areas:** Video · Streaming · Live Streaming · Video-on-Demand · Encoding · Playback · Video Analytics
 
-## Tags
+## FastPix on APIs.io
 
-- Video
-- Streaming
-- Live Streaming
-- Video on Demand
-- Encoding
-- Playback
-- Video Analytics
+Everything profiled for FastPix is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/fastpix/](https://apis.io/providers/fastpix/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-07-01
-- **Modified:** 2026-07-01
+- [FastPix Data API](https://apis.io/apis/fastpix/fastpix-data-api/) — Video views, metrics, dimensions, errors, and timeseries analytics.
+- [FastPix DRM API](https://apis.io/apis/fastpix/fastpix-drm-api/) — Retrieve DRM configurations for protected playback.
+- [FastPix In-Video AI API](https://apis.io/apis/fastpix/fastpix-in-video-ai-api/) — AI-driven media enrichment - summaries, chapters, moderation, named entities, subtitles.
+- [FastPix Live Streaming API](https://apis.io/apis/fastpix/fastpix-live-streaming-api/) — Create and manage live streams and their playback.
+- [FastPix On-Demand API](https://apis.io/apis/fastpix/fastpix-on-demand-api/) — Upload, import, manage, and encode video-on-demand media.
+- [FastPix Playback API](https://apis.io/apis/fastpix/fastpix-playback-api/) — Manage playback IDs for media and live streams.
+- [FastPix Signing Keys API](https://apis.io/apis/fastpix/fastpix-signing-keys-api/) — Manage keys used to sign JWTs for secure, tokenized playback.
+- [FastPix Simulcast API](https://apis.io/apis/fastpix/fastpix-simulcast-api/) — Restream a live stream to third-party RTMP destinations.
 
-## APIs
+### Published properties
 
-### FastPix On-Demand API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Upload or import video files, then encode, store, and manage on-demand media assets, tracks, MP4 downloads, source access, and clips.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.fastpix.io/reference](https://docs.fastpix.io/reference)
-- **Base URL:** `https://api.fastpix.io/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Fastpix Agentic Access](https://apis.io/agentic-access/fastpix/fastpix-agentic-access/)
 
-- Video on Demand
-- Upload
-- Encoding
-- Media
+#### Collections (9)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.fastpix.io/docs/get-started-in-5-minutes)
-- [API Reference](https://docs.fastpix.io/reference)
-- [OpenAPI](openapi/fastpix-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fastpix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fastpix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [FastPix API](https://apis.io/collections/fastpix/open-fastpix/)
+- [FastPix Data API](https://apis.io/collections/fastpix/open-fastpix-data-api/)
+- [FastPix Data DRM API](https://apis.io/collections/fastpix/open-fastpix-drm-api/)
+- [FastPix Data In-Video AI API](https://apis.io/collections/fastpix/open-fastpix-in-video-ai-api/)
+- [FastPix Data Live Streaming API](https://apis.io/collections/fastpix/open-fastpix-live-streaming-api/)
+- [FastPix Data On-Demand API](https://apis.io/collections/fastpix/open-fastpix-on-demand-api/)
+- [FastPix Data Playback API](https://apis.io/collections/fastpix/open-fastpix-playback-api/)
+- [FastPix Data Signing Keys API](https://apis.io/collections/fastpix/open-fastpix-signing-keys-api/)
+- [FastPix Data Simulcast API](https://apis.io/collections/fastpix/open-fastpix-simulcast-api/)
 
-### FastPix Live Streaming API
+#### Security (4)
 
-Create and manage live streams over RTMPS and SRT, control reconnect windows and stream state, and record live streams to on-demand assets with generated live clips.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.fastpix.io/docs/get-started-with-live-streaming](https://docs.fastpix.io/docs/get-started-with-live-streaming)
-- **Base URL:** `https://api.fastpix.io/v1`
+- [Fastpix Authentication](https://apis.io/security/fastpix/fastpix-authentication/)
+- [Fastpix Domain Security](https://apis.io/security/fastpix/fastpix-domain-security/)
+- [Fastpix Trust Center](https://apis.io/security/fastpix/fastpix-trust-center/)
+- [Fastpix Vulnerability Disclosure](https://apis.io/security/fastpix/fastpix-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Live Streaming
-- RTMP
-- SRT
-- Low Latency
+Published plans, tiers and prices.
 
-#### Properties
+- [Fastpix Plans Pricing](https://apis.io/plans/fastpix/fastpix-plans-pricing/)
 
-- [Documentation](https://docs.fastpix.io/docs/get-started-with-live-streaming)
-- [API Reference](https://docs.fastpix.io/reference)
-- [OpenAPI](openapi/fastpix-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fastpix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fastpix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### FastPix Simulcast API
+Published request limits.
 
-Restream a single live stream to multiple third-party RTMP destinations such as YouTube, Twitch, and Facebook simultaneously.
+- [Fastpix Rate Limits](https://apis.io/rate-limits/fastpix/fastpix-rate-limits/)
 
-- **Human URL:** [https://docs.fastpix.io/reference](https://docs.fastpix.io/reference)
-- **Base URL:** `https://api.fastpix.io/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Simulcast
-- Restream
-- RTMP
+- [Fastpix Finops](https://apis.io/finops/fastpix/fastpix-finops/)
 
-#### Properties
+## Where to find this API
 
-- [API Reference](https://docs.fastpix.io/reference)
-- [OpenAPI](openapi/fastpix-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fastpix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fastpix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### FastPix Playback & Signing Keys API
-
-Manage playback IDs for media and live streams, and create RSA signing keys used to mint JWTs for tokenized, private, and DRM-protected playback.
-
-- **Human URL:** [https://docs.fastpix.io/reference](https://docs.fastpix.io/reference)
-- **Base URL:** `https://api.fastpix.io/v1`
-
-#### Tags
-
-- Playback
-- Signing Keys
-- JWT
-- DRM
-- Security
-
-#### Properties
-
-- [Documentation](https://docs.fastpix.io/docs/secure-playback-with-signed-urls)
-- [API Reference](https://docs.fastpix.io/reference)
-- [OpenAPI](openapi/fastpix-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fastpix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fastpix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FastPix In-Video AI API
-
-Enrich media with AI - auto-generated subtitles and translations, summaries, chapters, named-entity extraction, and content moderation - via flags on the media update endpoint and subtitle generation.
-
-- **Human URL:** [https://docs.fastpix.io/docs/overview-of-in-video-ai-features](https://docs.fastpix.io/docs/overview-of-in-video-ai-features)
-- **Base URL:** `https://api.fastpix.io/v1`
-
-#### Tags
-
-- AI
-- Transcription
-- Summaries
-- Chapters
-- Moderation
-
-#### Properties
-
-- [Documentation](https://docs.fastpix.io/docs/overview-of-in-video-ai-features)
-- [API Reference](https://docs.fastpix.io/reference)
-- [OpenAPI](openapi/fastpix-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fastpix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fastpix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### FastPix Data & Views API
-
-Query video views, quality-of-experience metrics, dimensions, playback errors, timeseries, and breakdowns for viewer engagement and delivery analytics.
-
-- **Human URL:** [https://docs.fastpix.io/reference](https://docs.fastpix.io/reference)
-- **Base URL:** `https://api.fastpix.io/v1`
-
-#### Tags
-
-- Video Analytics
-- Views
-- Metrics
-- QoE
-
-#### Properties
-
-- [Documentation](https://docs.fastpix.io/docs/video-data-overview)
-- [API Reference](https://docs.fastpix.io/reference)
-- [OpenAPI](openapi/fastpix-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/fastpix.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/fastpix.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/FastPix)
-- [LinkedIn](https://www.linkedin.com/company/fastpix)
 - [Website](https://www.fastpix.io/)
 - [Documentation](https://docs.fastpix.io)
-- [Plans](plans/fastpix-plans-pricing.yml)
-- [Rate Limits](rate-limits/fastpix-rate-limits.yml)
-- [Fin Ops](finops/fastpix-finops.yml)
+- [Blog](https://fastpix.com/blog)
+- [GitHub](https://github.com/FastPix)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 29.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 15.8 |
+
+**Agent readiness 19.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 22.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/fastpix/](https://apis.io/providers/fastpix/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for FastPix: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/fastpix/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
